@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+wikiextractor/WikiExtractor.py
+wikiextractor.egg-info/PKG-INFO
+wikiextractor.egg-info/SOURCES.txt
+wikiextractor.egg-info/dependency_links.txt
+wikiextractor.egg-info/entry_points.txt
+wikiextractor.egg-info/requires.txt
+wikiextractor.egg-info/top_level.txt

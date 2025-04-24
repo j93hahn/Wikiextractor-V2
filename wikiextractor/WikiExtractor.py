@@ -42,7 +42,7 @@ import os.path
 import re  # TODO use regex when it will be standard
 import sys
 from timeit import default_timer
-from extract import Extractor, ignoreTag, define_template, acceptedNamespaces
+from wikiextractor.extract.extract import Extractor, ignoreTag, define_template, acceptedNamespaces
 
 
 # ===========================================================================
