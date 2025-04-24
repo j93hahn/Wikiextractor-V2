@@ -728,7 +728,8 @@ def main(*args, **kwargs):
     if args.debug:
         logger.setLevel(logging.DEBUG)
 
-    input_file = args.input
+    # input_file = args.input
+    input_file = "/mnt/nvme1/wikipedia/enwiki-latest-pages-articles.xml"
 
     if not Extractor.keepLinks:
         ignoreTag('a')
