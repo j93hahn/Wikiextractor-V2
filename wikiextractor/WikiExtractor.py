@@ -41,13 +41,8 @@ import logging
 import os.path
 import re  # TODO use regex when it will be standard
 import sys
-from io import StringIO
 from timeit import default_timer
-import inspect
-extract_path = os.path.realpath(os.path.abspath(os.path.join(os.path.split(inspect.getfile( inspect.currentframe() ))[0],"extract")))
-if extract_path not in sys.path:
-     sys.path.insert(0, extract_path)
-from extract import Extractor, ignoreTag, define_template, acceptedNamespaces
+from wikiextractor.extract.extract import Extractor, ignoreTag, define_template, acceptedNamespaces
 
 
 # ===========================================================================
@@ -209,7 +204,7 @@ def load_templates(file, output_file=None):
     if output_file:
         dir_name = os.path.dirname(output_file)
         try:
-            if(dir_name and not os.path.exists(dir_name)): 
+            if(dir_name and not os.path.exists(dir_name)):
                 #it has a folder in path but doesnt exist
                 os.makedirs(dir_name)
         except:
@@ -417,7 +412,7 @@ def preprocess_dump(input_file, template_file, expand_templates=True):
             input.close()
             input = decode_open(input_file)
 
-            
+
         template_load_elapsed = default_timer() - template_load_start
         logging.info("Loaded %d templates in %.1fs", templates, template_load_elapsed)
 
@@ -470,14 +465,14 @@ def preprocess_dump(input_file, template_file, expand_templates=True):
                         logging.debug("\tIgnoring template name:" + ignoreTempName)
                         Extractor.ignoreTemplates.add(ignoreTempName)
                     else:
-                        continue        
+                        continue
         else:
             Extractor.ignoreTemplates = set()
 
 
 
     # Discard some Wikipedia sections (current lang) specifying their title
-    if(Extractor.discardSections is not None): 
+    if(Extractor.discardSections is not None):
         basedir = os.path.dirname(os.path.realpath(__file__))
         path_to_discard_sections = os.path.join(basedir , Extractor.discardSections)
         Extractor.discardSections = set()
@@ -527,7 +522,7 @@ def process_dump_script(input_opened,input_file, out_file, file_size, file_compr
 
     ordinal = 1  # page count
 
-    for id, revid, title, page in collect_pages(input_opened): 
+    for id, revid, title, page in collect_pages(input_opened):
         #out :output folder path
         if ( Extractor(ordinal, revid, urlbase, title, page).extract(output, html_safe=True) ):
             ordinal += 1
@@ -559,7 +554,7 @@ def process_dump_generator(input_opened,input_file, urlbase):
     extract_start = default_timer()
 
     ordinal = 1  # page count
-    for id, revid, title, page in collect_pages(input_opened): 
+    for id, revid, title, page in collect_pages(input_opened):
         doc_info = Extractor(ordinal, revid, urlbase, title, page).extract(out=None, html_safe=True)
         if (doc_info):
             ordinal += 1
@@ -757,8 +752,8 @@ def main(*args, **kwargs):
 
 
     # Preproces dump:header and templates
-    input_opened, urlbase = preprocess_dump(    input_file, 
-                                                args.templates, 
+    input_opened, urlbase = preprocess_dump(    input_file,
+                                                args.templates,
                                                 expand_templates=bool(args.templates)
                                             )
 
@@ -766,7 +761,7 @@ def main(*args, **kwargs):
         return process_dump_generator(input_opened,input_file, urlbase)
 
     else:  #Using the tool as a a script
-        process_dump_script(    input_opened = input_opened, 
+        process_dump_script(    input_opened = input_opened,
                                 input_file = input_file,
                                 out_file = output_path,
                                 file_size=file_size,
