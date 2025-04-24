@@ -623,8 +623,8 @@ def main(*args, **kwargs):
         all_args.append(str(k))
         all_args.append(v)
 
-    parser.add_argument("input",
-                        help="XML wiki dump file")
+    # parser.add_argument("--input",
+    #                     help="XML wiki dump file")
 
     groupO = parser.add_argument_group('Output')
     groupO.add_argument("-o", "--output", default="text",
