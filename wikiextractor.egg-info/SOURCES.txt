@@ -8,3 +8,5 @@ wikiextractor.egg-info/dependency_links.txt
 wikiextractor.egg-info/entry_points.txt
 wikiextractor.egg-info/requires.txt
 wikiextractor.egg-info/top_level.txt
+wikiextractor/extract/__init__.py
+wikiextractor/extract/extract.py

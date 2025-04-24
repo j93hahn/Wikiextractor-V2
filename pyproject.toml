@@ -32,7 +32,7 @@ homepage = "https://github.com/attardi/wikiextractor"
 wikiextractor = "wikiextractor.WikiExtractor:main"
 
 [tool.setuptools]
-packages = ["wikiextractor"]
+packages = ["wikiextractor", "wikiextractor.extract"]
 
 [tool.setuptools.dynamic]
 version = {attr = "wikiextractor.WikiExtractor.__version__"}
